@@ -7,8 +7,9 @@ public class Character_Controller : MonoBehaviour
     private Rigidbody2D rb;
     
     public float moveSpeed = 5f;
+    Vector2 movement;
 
-    private Vector2 movement;
+    public int health = 5;
 
     void Start()
     {
