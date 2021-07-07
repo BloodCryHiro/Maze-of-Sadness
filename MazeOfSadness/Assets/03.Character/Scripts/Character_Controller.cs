@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Character_Controller : MonoBehaviour
 {
+    #region Variables
+
     // Variables for moving
     private Rigidbody2D rb;
     Vector2 movement;
@@ -12,12 +14,15 @@ public class Character_Controller : MonoBehaviour
 
     // Variables for dashing
     public float dashSpeed = 20f;
+    private float dashDistance = 4f;
     private bool isDashing = false;
     private bool canDash = true;
 
     Animator animator;
 
     public int health = 5;
+
+    #endregion
 
     void Start()
     {
@@ -69,7 +74,7 @@ public class Character_Controller : MonoBehaviour
     {
         isDashing = true;
         canDash = false;
-        rb.AddForce(movement * 4f, ForceMode2D.Impulse);
+        rb.AddForce(movement * dashDistance, ForceMode2D.Impulse);
         animator.SetBool("isDashing", true);
         yield return new WaitForSeconds(0.25f);
         isDashing = false;
